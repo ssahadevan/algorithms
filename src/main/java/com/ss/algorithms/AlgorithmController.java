@@ -176,7 +176,8 @@ public class AlgorithmController {
 			model.addAttribute("Result",  result);
 			return ( "viewResult" ); //View: result.html
 	    }
-	    
+
+
 	   
 	}
 
