@@ -6,7 +6,7 @@ public class InsertionSort {
     public static void main(String[] args){
         // System.out.println("In InsertionSort");
         InsertionSort is = new InsertionSort();
-        int[] arrayToSort={7, 5, 8, 7, 1, 2, 30};
+        int[] arrayToSort={7, 5, 8, 7, 1, 2, 30, 9, 48, 85};
 
         int[] result=is.doSort(arrayToSort);
         //System.out.println("Result is " + result );
@@ -22,6 +22,7 @@ public class InsertionSort {
         // System.out.println("In InsertionSort" + input);
         int i, j = 0 ;
         int currentValue=0;
+
         for ( i =0 ; i < input.length ; i ++ )
         {
             currentValue=input[i];
