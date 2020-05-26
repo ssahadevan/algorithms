@@ -4,6 +4,7 @@ package com.ss.algorithms.tree;
 public class BinaryTree {
 
     private Node rootNode = null ;
+    private boolean debug=true;
 
     public static void main(String[] args) throws Exception{
 
@@ -44,13 +45,19 @@ public class BinaryTree {
        else
           if ( currentNode.currentPrice <= nodeToAdd.currentPrice ) {
                Node addedNode = addNode(currentNode.rightNode, nodeToAdd);
-               if ( currentNode.rightNode == null )
-                   currentNode.rightNode= addedNode ;
+               if ( currentNode.rightNode == null ) {
+                   currentNode.rightNode = addedNode;
+                   if ( debug )
+                       System.out.println("INFO: Added " + addedNode.ticker + " to the right of " + currentNode.ticker);
+               }
            }
            else {
                Node addedNode = addNode(currentNode.leftNode, nodeToAdd);
-               if ( currentNode.leftNode == null )
-                   currentNode.leftNode= addedNode ;
+               if ( currentNode.leftNode == null ) {
+                   currentNode.leftNode = addedNode;
+                   if ( debug )
+                      System.out.println("INFO: Added " + addedNode.ticker + " to the left of " + currentNode.ticker);
+               }
            }
 
 
