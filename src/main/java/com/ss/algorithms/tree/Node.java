@@ -8,26 +8,47 @@ public class Node {
     double currentPrice;
     Node leftNode;
     Node rightNode;
+    Node parentNode;
 
-    public Node(String ticker, String companyName , double targetPrice , double currentPrice , Node leftNode, Node rightNode)
+    public Node(String ticker, String companyName , double targetPrice , double currentPrice )
     {
         this.ticker=ticker;
         this.companyName= companyName;
         this.targetPrice=targetPrice;
         this.currentPrice=currentPrice;
-        this.leftNode=leftNode;
-        this.rightNode=rightNode;
+        this.leftNode=null;
+        this.rightNode=null;
+        this.parentNode=null;
     }
+
+
 
     public void printNode()
     {
-        System.out.println( "Node is " + ticker
-                            + " , " + companyName
-                            + " , " + targetPrice
-                            + " , " + currentPrice
-                            + " , " + leftNode
-                            + " , " + rightNode
-        );
+
+        if ( parentNode != null ) {
+            System.out.println("Node is " + ticker
+                    + " , " + companyName
+                    + " , " + targetPrice
+                    + " , " + currentPrice
+                    + " , " + leftNode
+                    + " , " + rightNode
+                    + " , " + parentNode.ticker
+            );
+        }
+        else
+        {
+            System.out.println("Root Node is " + ticker
+                    + " , " + companyName
+                    + " , " + targetPrice
+                    + " , " + currentPrice
+                    + " , " + leftNode
+                    + " , " + rightNode
+                    + " , " + parentNode
+            );
+        }
+
+
     }
 }
 

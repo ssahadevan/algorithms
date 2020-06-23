@@ -8,10 +8,10 @@ public class BinaryTree {
 
     public static void main(String[] args) throws Exception{
 
-        Node intcNode= new Node("INTC", "INTEL", 61.25, 80.00, null, null);
+        Node intcNode= new Node("INTC", "INTEL", 61.25, 80.00);
         // System.out.println("In BinaryTree" + intcNode.ticker) ;
         // intcNode.printNode();
-        Node aapl= new Node("AAPL", "APPLE", 425.50, 318.05, null, null);
+        Node aapl= new Node("AAPL", "APPLE", 425.50, 318.05);
 
         BinaryTree myBt = new BinaryTree(intcNode);
         myBt.addNode( myBt.rootNode , aapl);
@@ -19,11 +19,11 @@ public class BinaryTree {
         System.out.println("Calling printtree");
         myBt.printTree(myBt.rootNode);
 
-        Node csco= new Node("CSCO", "Cisco", 55.50, 45.50, null, null);
+        Node csco= new Node("CSCO", "Cisco", 55.50, 45.50);
         myBt.addNode( myBt.rootNode , csco) ;
         myBt.printTree(myBt.rootNode);
 
-        Node nvda= new Node("NVDA", "Nvidia", 455.50, 345.50, null, null);
+        Node nvda= new Node("NVDA", "Nvidia", 455.50, 345.50);
         myBt.addNode( myBt.rootNode , nvda) ;
         myBt.printTree(myBt.rootNode);
 
@@ -40,13 +40,17 @@ public class BinaryTree {
        if ( nodeToAdd == null )
           throw new Exception("*** nodeToAdd cannot be null ");
 
-       if ( currentNode == null )
+       if ( currentNode == null ) {
+           // Root Node case
            currentNode = nodeToAdd;
+           nodeToAdd.parentNode=null;
+       }
        else
           if ( currentNode.currentPrice <= nodeToAdd.currentPrice ) {
                Node addedNode = addNode(currentNode.rightNode, nodeToAdd);
                if ( currentNode.rightNode == null ) {
                    currentNode.rightNode = addedNode;
+                   addedNode.parentNode=currentNode;
                    if ( debug )
                        System.out.println("INFO: Added " + addedNode.ticker + " to the right of " + currentNode.ticker);
                }
@@ -55,6 +59,7 @@ public class BinaryTree {
                Node addedNode = addNode(currentNode.leftNode, nodeToAdd);
                if ( currentNode.leftNode == null ) {
                    currentNode.leftNode = addedNode;
+                   addedNode.parentNode=currentNode;
                    if ( debug )
                       System.out.println("INFO: Added " + addedNode.ticker + " to the left of " + currentNode.ticker);
                }
