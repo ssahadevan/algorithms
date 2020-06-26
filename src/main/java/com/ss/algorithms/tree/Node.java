@@ -9,6 +9,9 @@ public class Node {
     Node leftNode;
     Node rightNode;
     Node parentNode;
+    boolean isLeftNode;
+    boolean isRightNode;
+    int depthOfNodeFromRoot;
 
     public Node(String ticker, String companyName , double targetPrice , double currentPrice )
     {
@@ -19,11 +22,14 @@ public class Node {
         this.leftNode=null;
         this.rightNode=null;
         this.parentNode=null;
+        isRightNode=false;
+        isLeftNode=false;
+        depthOfNodeFromRoot=0;
     }
 
 
 
-    public void printNode()
+    public void printNodeDetails()
     {
 
         if ( parentNode != null ) {
@@ -46,6 +52,42 @@ public class Node {
                     + " , " + rightNode
                     + " , " + parentNode
             );
+        }
+
+
+    }
+
+    public void printNode()
+    {
+
+        if ( parentNode != null )
+        {
+            if ( isLeftNode )
+            {
+                System.out.println("Left  Node: "
+                     //   + "   " + "  =|=  "
+                        + ticker
+                    //    + "  =|=  "
+                        + " , parentNode is " + parentNode.ticker
+                        + " , depthOfNodeFromRoot= " + depthOfNodeFromRoot
+                );
+            }
+            else
+            {
+                System.out.println("Right Node: "
+                      //      + "          " + "  =|= "
+                            + ticker
+                      //      + "  =|=  "
+                            + " , parentNode is " + parentNode.ticker
+                            + " , depthOfNodeFromRoot= " + depthOfNodeFromRoot
+                );
+            }
+        }
+        else
+        {
+            System.out.println("Root Node:"
+                    + " "
+                    + ticker);
         }
 
 

@@ -44,13 +44,16 @@ public class BinaryTree {
            // Root Node case
            currentNode = nodeToAdd;
            nodeToAdd.parentNode=null;
+           nodeToAdd.depthOfNodeFromRoot=0;
        }
        else
-          if ( currentNode.currentPrice <= nodeToAdd.currentPrice ) {
+          if ( currentNode.ticker.compareTo( nodeToAdd.ticker ) < 0 )  {
                Node addedNode = addNode(currentNode.rightNode, nodeToAdd);
                if ( currentNode.rightNode == null ) {
                    currentNode.rightNode = addedNode;
                    addedNode.parentNode=currentNode;
+                   addedNode.isRightNode=true;
+                   addedNode.depthOfNodeFromRoot = currentNode.depthOfNodeFromRoot + 1 ;
                    if ( debug )
                        System.out.println("INFO: Added " + addedNode.ticker + " to the right of " + currentNode.ticker);
                }
@@ -60,6 +63,8 @@ public class BinaryTree {
                if ( currentNode.leftNode == null ) {
                    currentNode.leftNode = addedNode;
                    addedNode.parentNode=currentNode;
+                   addedNode.isLeftNode=true;
+                   addedNode.depthOfNodeFromRoot = currentNode.depthOfNodeFromRoot + 1 ;
                    if ( debug )
                       System.out.println("INFO: Added " + addedNode.ticker + " to the left of " + currentNode.ticker);
                }
