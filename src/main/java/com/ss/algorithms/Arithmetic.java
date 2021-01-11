@@ -6,7 +6,7 @@ public class Arithmetic {
 	//private int firstValue;
 	//private int secondValue ;
 	private int result;
-	boolean debug = false;
+	boolean debug = true;
 	
 	public Arithmetic(int firstVal , int secondVal , String operator) throws Exception
 	{
@@ -15,8 +15,8 @@ public class Arithmetic {
 		if ( debug )
 		{
 		System.out.println("firstVal=" + firstVal
-				         + "secondVal =" + secondVal 
-				         + "operator is " + operator 
+				         + ",secondVal =" + secondVal
+				         + ",operator is " + operator
 				         );
 		}
 		
@@ -36,10 +36,11 @@ public class Arithmetic {
 		{
 			setResult(firstVal / secondVal) ;
 		}
-		else
-			throw new Exception( "Usage sameple " + "http://localhost:8080/arithmetic?firstValue=15&secondValue=5&operator=add)" );
-		
-	
+		else {
+
+			throw new Exception("Usage sameple " + "http://localhost:8080/arithmetic?firstValue=15&secondValue=5&operator=add)");
+
+		}
 		
 	}
 
